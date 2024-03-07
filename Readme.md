@@ -115,6 +115,8 @@ query {
 ````
 
 - Consulta de Registro de Nascimento por ID
+
+````
 graphql
 
 query {
@@ -127,6 +129,7 @@ query {
     registrationNumber
   }
 }
+````
 
 -Atualização de Registro de Nascimento
 graphql
