@@ -1,73 +1,108 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+### Birth Registration PaaS API - GraphQL 🚀 🔄 🌐
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Codificação de aplicação em NestJs com Typescript que fornece uma API para o registro de nascimentos para serviço de PaaS com GraphQL, permitindo criar, ler, atualizar e deletar registros de nascimento. Ela é construída usando NestJS e GraphQL, demonstrando como essas tecnologias podem ser utilizadas para construir APIs robustas e escaláveis.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+#### Tecnologias Utilizadas
+NestJS: Um framework de Node.js para construir aplicações server-side eficientes e escaláveis.
+GraphQL: Uma linguagem de consulta para APIs que fornece uma maneira mais eficiente, poderosa e flexível de trabalhar com dados.
+Prisma: Um ORM (Object-Relational Mapping) que facilita o trabalho com o banco de dados.
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+#### Estrutura do Código
+src/
+birth-record/: Módulo contendo a lógica de negócios para os registros de nascimento.
+dto/: Data Transfer Objects definindo as estruturas para criação e atualização dos registros.
+entities/: Entidades usadas pelo GraphQL para definir os tipos de dados.
+birth-record.module.ts: Módulo NestJS para agrupar componentes relacionados aos registros de nascimento.
+birth-record.resolver.ts: Resolver GraphQL para lidar com as queries e mutations.
+birth-record.service.ts: Serviço para executar operações de negócios relacionadas aos registros de nascimento.
+prisma/: Módulo contendo a configuração e serviço do Prisma.
+prisma/schema.prisma: Define o modelo de dados para o Prisma.
+Funcionalidades
 
-## Installation
+#### A API suporta as seguintes operações:
 
-```bash
-$ npm install
-```
+Criação de Registro de Nascimento: Permite adicionar um novo registro de nascimento.
+Listagem de Registros de Nascimento: Permite listar todos os registros de nascimento.
+Consulta de Registro de Nascimento por ID: Permite consultar um registro específico por seu ID.
+Atualização de Registro de Nascimento: Permite atualizar um registro de nascimento existente.
+Remoção de Registro de Nascimento: Permite remover um registro de nascimento.
+Exemplos de Requisições GraphQL
+Criação de Registro de Nascimento
+graphql
 
-## Running the app
+````
+mutation {
+  registerBirth(birthRecordInput: {
+    fullName: "John Doe",
+    dateOfBirth: "2024-01-01",
+    placeOfBirth: "City, Country",
+    parentNames: ["Jane Doe", "Doe John"],
+    registrationNumber: "123456"
+  }) {
+    id
+    fullName
+  }
+}
+````
 
-```bash
-# development
-$ npm run start
+- Listagem de Registros de Nascimento
+graphql
+````
+query {
+  birthRecords {
+    id
+    fullName
+  }
+}
+````
 
-# watch mode
-$ npm run start:dev
+- Consulta de Registro de Nascimento por ID
+graphql
 
-# production mode
-$ npm run start:prod
-```
+query {
+  birthRecord(id: 1) {
+    id
+    fullName
+    dateOfBirth
+    placeOfBirth
+    parentNames
+    registrationNumber
+  }
+}
 
-## Test
+-Atualização de Registro de Nascimento
+graphql
+````
+mutation {
+  updateBirthRecord(updateBirthRecordInput: {
+    id: 1,
+    fullName: "John Doe Jr."
+  }) {
+    id
+    fullName
+  }
+}
+````
+- Remoção de Registro de Nascimento
 
-```bash
-# unit tests
-$ npm run test
+````
+graphql
+mutation {
+  removeBirthRecord(id: 1)
+}
+````
 
-# e2e tests
-$ npm run test:e2e
+#### Boas Práticas e Padrões Utilizados
+Princípios SOLID: Os princípios SOLID são seguidos para garantir que o código seja modular, extensível e fácil de manter.
+Padrões de Design: Utilizamos padrões como Dependency Injection (DI) fornecido pelo NestJS para desacoplar as dependências e facilitar o teste.
+Validação de Dados: Utilizamos decorators de validação nos DTOs para garantir a integridade dos dados enviados para a API.
+Tratamento de Erros: Implementamos um tratamento de erros robusto para fornecer feedback claro e preciso para os consumidores da API.
+Este README fornece uma visão geral da sua aplicação de registro de nascimentos, incluindo como interagir com ela via GraphQL e as boas práticas adotadas durante o desenvolvimento. Lembre-se de ajustar os caminhos e os exemplos conforme necessário para refletir exatamente como sua aplicação está estruturada.
 
-# test coverage
-$ npm run test:cov
-```
+#### Conclusão
+A aplicação em NestJs fornece uma visão geral da sua aplicação de registro de nascimentos, incluindo como interagir com ela via GraphQL e as boas práticas adotadas durante o desenvolvimento. Lembre-se de ajustar os caminhos e os exemplos conforme necessário para refletir exatamente como sua aplicação está estruturada.
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+#### Autor:
+Emerson Amorim [@emerson-amorim-dev](https://www.linkedin.com/in/emerson-amorim-dev/)
