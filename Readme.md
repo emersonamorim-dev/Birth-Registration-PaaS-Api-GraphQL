@@ -1,6 +1,6 @@
 ### Birth Registration PaaS API - GraphQL 🚀 🔄 🌐
 
-Codificação de aplicação em NestJs com Typescript que fornece uma API para o registro de nascimentos para serviço de PaaS com GraphQL, permitindo criar, ler, atualizar e deletar registros de nascimento. Ela é construída usando NestJS e GraphQL, demonstrando como essas tecnologias podem ser utilizadas para construir APIs robustas e escaláveis.
+Codificação de aplicação em NestJs com Typescript que fornece uma API para o registro de nascimentos para serviço de PaaS com uso GraphQL e PostgreSQL, permitindo criar, ler, atualizar e deletar registros de nascimento. Ela é construída usando NestJS e GraphQL, demonstrando como essas tecnologias podem ser utilizadas para construir APIs robustas e escaláveis.
 
 #### Tecnologias Utilizadas
 - NestJS: Um framework de Node.js para construir aplicações server-side eficientes e escaláveis.
