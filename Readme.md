@@ -5,6 +5,7 @@ Codificação de aplicação em NestJs com Typescript que fornece uma API para o
 #### Tecnologias Utilizadas
 - NestJS: Um framework de Node.js para construir aplicações server-side eficientes e escaláveis.
 - GraphQL: Uma linguagem de consulta para APIs que fornece uma maneira mais eficiente, poderosa e flexível de trabalhar com dados.
+  PostgreSQL: um banco de dados SQL
 - Prisma: Um ORM (Object-Relational Mapping) que facilita o trabalho com o banco de dados.
 
 
