@@ -14,14 +14,13 @@ export class BirthRecordResolver {
       return this.birthRecordService.create(birthRecordInput);
   }
 
-
   @Query(returns => [BirthRecord])
   async birthRecords(): Promise<BirthRecord[]> {
     return this.birthRecordService.findAll();
   }
 
-  @Query(returns => BirthRecord, { nullable: true }) 
-  async findOne(@Args('id') id: number): Promise<BirthRecord> {
+  @Query(returns => BirthRecord, { nullable: true })
+  async birthRecord(@Args('id') id: number): Promise<BirthRecord | null> {
     return this.birthRecordService.findOne(id);
   }
 
