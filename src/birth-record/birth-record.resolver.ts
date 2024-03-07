@@ -14,8 +14,9 @@ export class BirthRecordResolver {
       return this.birthRecordService.create(birthRecordInput);
   }
 
+
   @Query(returns => [BirthRecord])
-  async findAll(): Promise<BirthRecord[]> {
+  async birthRecords(): Promise<BirthRecord[]> {
     return this.birthRecordService.findAll();
   }
 
