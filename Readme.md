@@ -21,6 +21,61 @@ prisma/: Módulo contendo a configuração e serviço do Prisma.
 prisma/schema.prisma: Define o modelo de dados para o Prisma.
 Funcionalidades
 
+#### Comandos para subir aplicação:
+
+Instalar o NestJs caso não tenha instalado
+````
+npm i -g @nestjs/cli
+````
+
+Acesse o diretório da aplicação:
+````
+cd birth-registration-paas
+````
+
+2. Instalação do GraphQL e Prisma
+````
+npm install @nestjs/graphql @nestjs/apollo graphql apollo-server-express
+
+````
+3. Para instalar o Prisma, um ORM que facilita o acesso ao banco de dados:
+````
+npm install prisma @prisma/client
+````
+
+````
+npx prisma init
+````
+
+4.  Definindo o Modelo de Dados - Edite o arquivo schema.prisma para definir o modelo para registro de nascimento.
+````
+model BirthRecord {
+  id           Int      @id @default(autoincrement())
+  fullName     String
+  dateOfBirth  DateTime
+  placeOfBirth String
+  parentNames  String[]
+  registrationNumber String @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+Execute o seguinte comando para criar as tabelas no banco de dados:
+````
+npx prisma migrate dev --name init
+
+````
+5. Configure o .env com seus dados de acesso ao Banco de dados:
+````
+DATABASE_URL="postgresql://seuUsuario:suasenhaxp@localhost:5432/seudb?schema=public"
+````
+
+6. Rode a Aplicação com:
+
+````
+npm run start
+````
+
 #### A API suporta as seguintes operações:
 
 Criação de Registro de Nascimento: Permite adicionar um novo registro de nascimento.
