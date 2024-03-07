@@ -131,7 +131,7 @@ query {
 }
 ````
 
--Atualização de Registro de Nascimento
+- Atualização de Registro de Nascimento
 graphql
 ````
 mutation {
