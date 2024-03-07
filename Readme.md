@@ -77,6 +77,16 @@ DATABASE_URL="postgresql://seuUsuario:suasenhaxp@localhost:5432/seudb?schema=pub
 npm run start
 ````
 
+7. Acesse aplicação:
+````
+http://localhost:3000
+````
+
+8. Acesse Playground do GraphQL:
+````
+http://localhost:3000/graphql
+````
+
 #### A API suporta as seguintes operações:
 
 Criação de Registro de Nascimento: Permite adicionar um novo registro de nascimento.
@@ -91,10 +101,10 @@ graphql
 ````
 mutation {
   registerBirth(birthRecordInput: {
-    fullName: "John Doe",
-    dateOfBirth: "2024-01-01",
+    fullName: "Emerson Amorim - FullStack",
+    dateOfBirth: "2024-03-07",
     placeOfBirth: "City, Country",
-    parentNames: ["Jane Doe", "Doe John"],
+    parentNames: ["Ernandes", "Luiz"],
     registrationNumber: "123456"
   }) {
     id
