@@ -59,6 +59,7 @@ model BirthRecord {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
+````
 
 Execute o seguinte comando para criar as tabelas no banco de dados:
 ````
